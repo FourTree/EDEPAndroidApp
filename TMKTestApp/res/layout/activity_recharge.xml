@@ -1,0 +1,72 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:fadingEdge="horizontal|vertical"
+    tools:context="${packageName}.${activityClass}" >
+
+    <TextView
+        android:id="@+id/curbalance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/recMoney"
+        android:layout_alignRight="@+id/recMoney"
+        android:layout_below="@+id/textView1"
+        android:background="@color/gray" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/curbalance"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="18dp"
+        android:text="@string/currBalance"
+        android:textColor="@color/white" />
+
+    <EditText
+        android:id="@+id/recMoney"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true"
+        android:background="@color/white"
+        android:ems="9"
+        android:enabled="true"
+        android:inputType="number"
+        android:maxLength="4"
+        android:textColorLink="@color/black" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/recMoney"
+        android:layout_below="@+id/curbalance"
+        android:layout_marginTop="17dp"
+        android:text="@string/rechargemoney"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/recharge"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignLeft="@+id/recMoney"
+        android:layout_alignRight="@+id/recMoney"
+        android:layout_below="@+id/recMoney"
+        android:layout_marginTop="36dp"
+        android:background="@color/azure"
+        android:text="@string/trade" />
+
+    <TextView
+        android:id="@+id/pormpt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/recharge"
+        android:layout_alignRight="@+id/recharge"
+        android:layout_below="@+id/recharge"
+        android:layout_marginTop="30dp"
+        android:textColor="@color/red" />
+
+</RelativeLayout>
