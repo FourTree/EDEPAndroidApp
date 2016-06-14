@@ -63,13 +63,13 @@ public class TradeRecord {
 				result = GetSimInfo.DealAPDU(apdu);
 				if(!result.getResulttag())
 				{
-					ShowDialog.creatDialog(0, "ÌáÊ¾", "¶ÁÈ¡½»Ò×¼ÇÂ¼Ê§°Ü£¡",null);
+					ShowDialog.creatDialog(0, "æç¤º", "è¯»å–äº¤æ˜“è®°å½•å¤±è´¥ï¼",null);
 					GetSimInfo.close();
 					return;
 				}
 				if(result.getResValue().equals("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF") || result.getSW().equals("6a83")){
 					if(i == 0){
-						ShowDialog.creatDialog(0, "ÌáÊ¾", "¿¨ÄÚÔİÎŞ½»Ò×¼ÇÂ¼£¡",null);
+						ShowDialog.creatDialog(0, "æç¤º", "å¡å†…æš‚æ— äº¤æ˜“è®°å½•ï¼",null);
 						GetSimInfo.close();
 						return;
 					}
@@ -83,30 +83,30 @@ public class TradeRecord {
 			{
 				record[i] = RECORD.get(i);
 			}
-			ShowDialog.creatDialog(3, "ÕË»§½»Ò×Ã÷Ï¸", null,record);
+			ShowDialog.creatDialog(3, "è´¦æˆ·äº¤æ˜“æ˜ç»†", null,record);
 		}else{
 			GetSimInfo.close();
 			Util.bytesToString(result.getTagvalue()).replace(" ", "");
-			ShowDialog.creatDialog(0, "ÌáÊ¾", "ÕË»§½»Ò×¼ÇÂ¼²éÑ¯Ê§°Ü£¡",null);
+			ShowDialog.creatDialog(0, "æç¤º", "è´¦æˆ·äº¤æ˜“è®°å½•æŸ¥è¯¢å¤±è´¥ï¼",null);
 		}
     } 
 	
 	private void saveRecord(String record,int i){
-		//½«apdu×ª»»ÎªString¸ñÊ½
+		//å°†apduè½¬æ¢ä¸ºStringæ ¼å¼
 		if(record.isEmpty())
 		{
 			return;
 		}
-		String yy = record.substring(32,36);//Äê
-		String mm = record.substring(36,38);//ÔÂ
-		String dd = record.substring(38,40);//ÈÕ
+		String yy = record.substring(32,36);//å¹´
+		String mm = record.substring(36,38);//æœˆ
+		String dd = record.substring(38,40);//æ—¥
 		String tp =  record.substring(40, record.length());
-		String time = tp.substring(0,2)+":"+ tp.substring(2,4)+":"+tp.substring(4,6);//Ê±¼ä
-		String money =  record.substring(10,18);//½ğ¶î£¬Ê®Áù½øÖÆ×Ö·û´®
+		String time = tp.substring(0,2)+":"+ tp.substring(2,4)+":"+tp.substring(4,6);//æ—¶é—´
+		String money =  record.substring(10,18);//é‡‘é¢ï¼Œåå…­è¿›åˆ¶å­—ç¬¦ä¸²
 		//var temp = parseInt(money,16);   //"AF" returns   175
-		int tpmoney = Integer.valueOf(money,16);//½ğ¶î£¬Ê®½øÖÆÊı×Ö
+		int tpmoney = Integer.valueOf(money,16);//é‡‘é¢ï¼Œåè¿›åˆ¶æ•°å­—
 		String type = record.substring(18, 20);
-		String temp = yy+"Äê"+mm+"ÔÂ"+dd+"ÈÕ"+" "+time+(type.equals("02")? "   ³äÖµ½ğ¶î":"   Ïû·Ñ½ğ¶î£º")+(tpmoney/100.0)+"Ôª";
+		String temp = yy+"å¹´"+mm+"æœˆ"+dd+"æ—¥"+" "+time+(type.equals("02")? "   å……å€¼é‡‘é¢":"   æ¶ˆè´¹é‡‘é¢ï¼š")+(tpmoney/100.0)+"å…ƒ";
 		RECORD.add(temp);
 		return;
 	}

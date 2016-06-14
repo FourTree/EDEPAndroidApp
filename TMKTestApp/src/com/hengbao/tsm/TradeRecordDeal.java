@@ -35,8 +35,8 @@ public class TradeRecordDeal {
 	private static Tag[] recordTL; 
 	
 	public static boolean RecordType(byte[] apdu){
-		//判断都有哪些
-		//暂时只存储不处理
+		//鍒ゆ柇閮芥湁鍝簺
+		//鏆傛椂鍙瓨鍌ㄤ笉澶勭悊
 		if(!recordlist.isEmpty())
 		{
 			recordlist.clear();
@@ -87,7 +87,7 @@ public class TradeRecordDeal {
 	
 	
 	public static void saveRecord(byte[] apdu){
-		//将apdu转换为String格式
+		//灏哸pdu杞崲涓篠tring鏍煎紡
 /*		byte[] mapdu = Util.ByteToAscii(apdu, apdu.length);
 		String result = null;
 		try {
@@ -113,7 +113,7 @@ public class TradeRecordDeal {
 	}
 	
 	public static String[] getRecord(){
-		//将apdu转换为String格式
+		//灏哸pdu杞崲涓篠tring鏍煎紡
 		if(recordlist.isEmpty())
 		{
 			return null;

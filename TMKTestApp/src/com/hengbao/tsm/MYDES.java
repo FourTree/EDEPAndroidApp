@@ -1,7 +1,7 @@
 package com.hengbao.tsm;
 
 public class MYDES {
-    // ÉùÃ÷³£Á¿×Ö½ÚÊı×é
+    // å£°æ˜å¸¸é‡å­—èŠ‚æ•°ç»„
     private static final int[] IP = {
             58, 50, 42, 34, 26, 18, 10, 2, 60, 52, 44, 36, 28, 20, 12, 4, 62, 54,
             46, 38, 30, 22, 14, 6, 64, 56, 48, 40, 32, 24, 16, 8, 57, 49, 41, 33,
@@ -86,10 +86,10 @@ public class MYDES {
         };
     private static final int[] LeftMove = {
             1, 1, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 1
-        }; // ×óÒÆÎ»ÖÃÁĞ±í
+        }; // å·¦ç§»ä½ç½®åˆ—è¡¨
 
     private byte[] UnitDes(byte[] des_key, byte[] des_data, int flag) {
-        // ¼ì²âÊäÈë²ÎÊı¸ñÊ½ÊÇ·ñÕıÈ·£¬´íÎóÖ±½Ó·µ»Ø¿ÕÖµ£¨null£©
+        // æ£€æµ‹è¾“å…¥å‚æ•°æ ¼å¼æ˜¯å¦æ­£ç¡®ï¼Œé”™è¯¯ç›´æ¥è¿”å›ç©ºå€¼ï¼ˆnullï¼‰
         if ((des_key.length != 8) || (des_data.length != 8) ||
                 ((flag != 1) && (flag != 0))) {
             throw new RuntimeException("Data Format Error !");
@@ -97,51 +97,51 @@ public class MYDES {
 
         int flags = flag;
 
-        // ¶ş½øÖÆ¼ÓÃÜÃÜÔ¿
+        // äºŒè¿›åˆ¶åŠ å¯†å¯†é’¥
         int[] keydata = new int[64];
 
-        // ¶ş½øÖÆ¼ÓÃÜÊı¾İ
+        // äºŒè¿›åˆ¶åŠ å¯†æ•°æ®
         int[] encryptdata = new int[64];
 
-        // ¼ÓÃÜ²Ù×÷Íê³ÉºóµÄ×Ö½ÚÊı×é
+        // åŠ å¯†æ“ä½œå®Œæˆåçš„å­—èŠ‚æ•°ç»„
         byte[] EncryptCode = new byte[8];
 
-        // ÃÜÔ¿³õÊÔ»¯³É¶şÎ¬Êı×é
+        // å¯†é’¥åˆè¯•åŒ–æˆäºŒç»´æ•°ç»„
         int[][] KeyArray = new int[16][48];
-        // ½«ÃÜÔ¿×Ö½ÚÊı×é×ª»»³É¶ş½øÖÆ×Ö½ÚÊı×é
+        // å°†å¯†é’¥å­—èŠ‚æ•°ç»„è½¬æ¢æˆäºŒè¿›åˆ¶å­—èŠ‚æ•°ç»„
         keydata = ReadDataToBirnaryIntArray(des_key);
-        // ½«¼ÓÃÜÊı¾İ×Ö½ÚÊı×é×ª»»³É¶ş½øÖÆ×Ö½ÚÊı×é
+        // å°†åŠ å¯†æ•°æ®å­—èŠ‚æ•°ç»„è½¬æ¢æˆäºŒè¿›åˆ¶å­—èŠ‚æ•°ç»„
         encryptdata = ReadDataToBirnaryIntArray(des_data);
-        // ³õÊÔ»¯ÃÜÔ¿Îª¶şÎ¬ÃÜÔ¿Êı×é
+        // åˆè¯•åŒ–å¯†é’¥ä¸ºäºŒç»´å¯†é’¥æ•°ç»„
         KeyInitialize(keydata, KeyArray);
-        // Ö´ĞĞ¼ÓÃÜ½âÃÜ²Ù×÷
+        // æ‰§è¡ŒåŠ å¯†è§£å¯†æ“ä½œ
         EncryptCode = Encrypt(encryptdata, flags, KeyArray);
 
         return EncryptCode;
     }
 
-    // ³õÊÔ»¯ÃÜÔ¿Êı×é
+    // åˆè¯•åŒ–å¯†é’¥æ•°ç»„
     private void KeyInitialize(int[] key, int[][] keyarray) {
         int i;
         int j;
         int[] K0 = new int[56];
 
-        // ÌØ±ğ×¢Òâ£ºxxx[IP[i]-1]µÈÀàËÆ±ä»»
+        // ç‰¹åˆ«æ³¨æ„ï¼šxxx[IP[i]-1]ç­‰ç±»ä¼¼å˜æ¢
         for (i = 0; i < 56; i++) {
-            K0[i] = key[PC_1[i] - 1]; // ÃÜÔ¿½øĞĞPC-1±ä»»
+            K0[i] = key[PC_1[i] - 1]; // å¯†é’¥è¿›è¡ŒPC-1å˜æ¢
         }
 
         for (i = 0; i < 16; i++) {
             LeftBitMove(K0, LeftMove[i]);
 
-            // ÌØ±ğ×¢Òâ£ºxxx[IP[i]-1]µÈÀàËÆ±ä»»
+            // ç‰¹åˆ«æ³¨æ„ï¼šxxx[IP[i]-1]ç­‰ç±»ä¼¼å˜æ¢
             for (j = 0; j < 48; j++) {
-                keyarray[i][j] = K0[PC_2[j] - 1]; // Éú³É×ÓÃÜÔ¿keyarray[i][j]
+                keyarray[i][j] = K0[PC_2[j] - 1]; // ç”Ÿæˆå­å¯†é’¥keyarray[i][j]
             }
         }
     }
 
-    // Ö´ĞĞ¼ÓÃÜ½âÃÜ²Ù×÷
+    // æ‰§è¡ŒåŠ å¯†è§£å¯†æ“ä½œ
     private byte[] Encrypt(int[] timeData, int flag, int[][] keyarray) {
         int i;
         byte[] encrypt = new byte[8];
@@ -149,17 +149,17 @@ public class MYDES {
         int[] M = new int[64];
         int[] MIP_1 = new int[64];
 
-        // ÌØ±ğ×¢Òâ£ºxxx[IP[i]-1]µÈÀàËÆ±ä»»
+        // ç‰¹åˆ«æ³¨æ„ï¼šxxx[IP[i]-1]ç­‰ç±»ä¼¼å˜æ¢
         for (i = 0; i < 64; i++) {
-            M[i] = timeData[IP[i] - 1]; // Ã÷ÎÄIP±ä»»
+            M[i] = timeData[IP[i] - 1]; // æ˜æ–‡IPå˜æ¢
         }
 
-        if (flags == 1) { // ¼ÓÃÜ
+        if (flags == 1) { // åŠ å¯†
 
             for (i = 0; i < 16; i++) {
                 LoopF(M, i, flags, keyarray);
             }
-        } else if (flags == 0) { // ½âÃÜ
+        } else if (flags == 0) { // è§£å¯†
 
             for (i = 15; i > -1; i--) {
                 LoopF(M, i, flags, keyarray);
@@ -167,12 +167,12 @@ public class MYDES {
         }
 
         for (i = 0; i < 64; i++) {
-            MIP_1[i] = M[IP_1[i] - 1]; // ½øĞĞIP-1ÔËËã
+            MIP_1[i] = M[IP_1[i] - 1]; // è¿›è¡ŒIP-1è¿ç®—
         }
 
         GetEncryptResultOfByteArray(MIP_1, encrypt);
 
-        // ·µ»Ø¼ÓÃÜÊı¾İ
+        // è¿”å›åŠ å¯†æ•°æ®
         return encrypt;
     }
 
@@ -180,7 +180,7 @@ public class MYDES {
         int i;
         int j;
 
-        // ½«Êı¾İ×ª»»Îª¶ş½øÖÆÊı£¬´æ´¢µ½Êı×é
+        // å°†æ•°æ®è½¬æ¢ä¸ºäºŒè¿›åˆ¶æ•°ï¼Œå­˜å‚¨åˆ°æ•°ç»„
         int[] IntDa = new int[8];
 
         for (i = 0; i < 8; i++) {
@@ -207,7 +207,7 @@ public class MYDES {
     private void LeftBitMove(int[] k, int offset) {
         int i;
 
-        // Ñ­»·ÒÆÎ»²Ù×÷º¯Êı
+        // å¾ªç¯ç§»ä½æ“ä½œå‡½æ•°
         int[] c0 = new int[28];
         int[] d0 = new int[28];
         int[] c1 = new int[28];
@@ -219,7 +219,7 @@ public class MYDES {
         }
 
         if (offset == 1) {
-            for (i = 0; i < 27; i++) { // Ñ­»·×óÒÆÒ»Î»
+            for (i = 0; i < 27; i++) { // å¾ªç¯å·¦ç§»ä¸€ä½
                 c1[i] = c0[i + 1];
                 d1[i] = d0[i + 1];
             }
@@ -227,7 +227,7 @@ public class MYDES {
             c1[27] = c0[0];
             d1[27] = d0[0];
         } else if (offset == 2) {
-            for (i = 0; i < 26; i++) { // Ñ­»·×óÒÆÁ½Î»
+            for (i = 0; i < 26; i++) { // å¾ªç¯å·¦ç§»ä¸¤ä½
                 c1[i] = c0[i + 2];
                 d1[i] = d0[i + 2];
             }
@@ -258,30 +258,30 @@ public class MYDES {
         int[] RP = new int[32];
 
         for (i = 0; i < 32; i++) {
-            L0[i] = M[i]; // Ã÷ÎÄ×ó²àµÄ³õÊ¼»¯
-            R0[i] = M[i + 32]; // Ã÷ÎÄÓÒ²àµÄ³õÊ¼»¯
+            L0[i] = M[i]; // æ˜æ–‡å·¦ä¾§çš„åˆå§‹åŒ–
+            R0[i] = M[i + 32]; // æ˜æ–‡å³ä¾§çš„åˆå§‹åŒ–
         }
 
         for (i = 0; i < 48; i++) {
-            RE[i] = R0[E[i] - 1]; // ¾­¹ıE±ä»»À©³ä£¬ÓÉ32Î»±äÎª48Î»
-            RE[i] = RE[i] + keyarray[times][i]; // ÓëKeyArray[times][i]°´Î»×÷²»½øÎ»¼Ó·¨ÔËËã
+            RE[i] = R0[E[i] - 1]; // ç»è¿‡Eå˜æ¢æ‰©å……ï¼Œç”±32ä½å˜ä¸º48ä½
+            RE[i] = RE[i] + keyarray[times][i]; // ä¸KeyArray[times][i]æŒ‰ä½ä½œä¸è¿›ä½åŠ æ³•è¿ç®—
 
             if (RE[i] == 2) {
                 RE[i] = 0;
             }
         }
 
-        for (i = 0; i < 8; i++) { // 48Î»·Ö³É8×é
+        for (i = 0; i < 8; i++) { // 48ä½åˆ†æˆ8ç»„
 
             for (j = 0; j < 6; j++) {
                 S[i][j] = RE[(i * 6) + j];
             }
 
-            // ÏÂÃæ¾­¹ıSºĞ£¬µÃµ½8¸öÊı
+            // ä¸‹é¢ç»è¿‡Sç›’ï¼Œå¾—åˆ°8ä¸ªæ•°
             sBoxData[i] = S_Box[i][(S[i][0] << 1) + S[i][5]][(S[i][1] << 3) +
                 (S[i][2] << 2) + (S[i][3] << 1) + S[i][4]];
 
-            // 8¸öÊı±ä»»Êä³ö¶ş½øÖÆ
+            // 8ä¸ªæ•°å˜æ¢è¾“å‡ºäºŒè¿›åˆ¶
             for (j = 0; j < 4; j++) {
                 sValue[((i * 4) + 3) - j] = sBoxData[i] % 2;
                 sBoxData[i] = sBoxData[i] / 2;
@@ -289,16 +289,16 @@ public class MYDES {
         }
 
         for (i = 0; i < 32; i++) {
-            RP[i] = sValue[P[i] - 1]; // ¾­¹ıP±ä»»
-            L1[i] = R0[i]; // ÓÒ±ßÒÆµ½×ó±ß
+            RP[i] = sValue[P[i] - 1]; // ç»è¿‡På˜æ¢
+            L1[i] = R0[i]; // å³è¾¹ç§»åˆ°å·¦è¾¹
             R1[i] = L0[i] + RP[i];
 
             if (R1[i] == 2) {
                 R1[i] = 0;
             }
 
-            // ÖØĞÂºÏ³ÉM£¬·µ»ØÊı×éM
-            // ×îºóÒ»´Î±ä»»Ê±£¬×óÓÒ²»½øĞĞ»¥»»¡£´Ë´¦²ÉÓÃÁ½´Î±ä»»ÊµÏÖ²»±ä
+            // é‡æ–°åˆæˆMï¼Œè¿”å›æ•°ç»„M
+            // æœ€åä¸€æ¬¡å˜æ¢æ—¶ï¼Œå·¦å³ä¸è¿›è¡Œäº’æ¢ã€‚æ­¤å¤„é‡‡ç”¨ä¸¤æ¬¡å˜æ¢å®ç°ä¸å˜
             if (((flag == 0) && (times == 0)) ||
                     ((flag == 1) && (times == 15))) {
                 M[i] = R1[i];
@@ -314,7 +314,7 @@ public class MYDES {
         int i;
         int j;
 
-        // ½«´æ´¢64Î»¶ş½øÖÆÊı¾İµÄÊı×éÖĞµÄÊı¾İ×ª»»Îª°Ë¸öÕûÊı£¨byte£©
+        // å°†å­˜å‚¨64ä½äºŒè¿›åˆ¶æ•°æ®çš„æ•°ç»„ä¸­çš„æ•°æ®è½¬æ¢ä¸ºå…«ä¸ªæ•´æ•°ï¼ˆbyteï¼‰
         for (i = 0; i < 8; i++) {
             for (j = 0; j < 8; j++) {
                 value[i] += (data[(i << 3) + j] << (7 - j));
@@ -361,7 +361,7 @@ public class MYDES {
         }
         
 
-//        // µ±Ç°Îª½âÃÜ¹ı³Ì£¬È¥µô¼ÓÃÜÊ±²úÉúµÄÌî³äÎ»
+//        // å½“å‰ä¸ºè§£å¯†è¿‡ç¨‹ï¼Œå»æ‰åŠ å¯†æ—¶äº§ç”Ÿçš„å¡«å……ä½
 //        byte[] decryptbytearray = null;
 //
 //        if (flag == 0) {

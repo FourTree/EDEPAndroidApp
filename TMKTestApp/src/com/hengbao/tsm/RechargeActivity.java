@@ -18,14 +18,14 @@ public class RechargeActivity extends Activity implements OnClickListener {
 	TextView showpormptT;
 	int curbalance;
 	byte[] appletaid;
-	final byte[] keyindex=new byte[]{(byte)0x01};//È¦´æÃÜÔ¿Ë÷Òı£¬0x01
-	final String strtradtype = "02";//½»Ò×ÀàĞÍ£¬³äÖµ--0x02
+	final byte[] keyindex=new byte[]{(byte)0x01};//åœˆå­˜å¯†é’¥ç´¢å¼•ï¼Œ0x01
+	final String strtradtype = "02";//äº¤æ˜“ç±»å‹ï¼Œå……å€¼--0x02
 	final byte[] terminalnum = new byte[]{(byte)0x12,(byte)0x34,(byte)0x56,(byte)0x78,(byte)0x90,(byte)0xAB};
 	final String strterminalnum ="1234567890AB";
 	final byte[] rechargekey = new byte[]{	(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
 											(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
 											(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF,
-											(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF };//È¦´æÃÜÔ¿
+											(byte)0xFF,(byte)0xFF,(byte)0xFF,(byte)0xFF };//åœˆå­˜å¯†é’¥
 	
 	MYDES mydes = new MYDES();
 
@@ -47,12 +47,12 @@ public class RechargeActivity extends Activity implements OnClickListener {
 		Balance balance = new Balance();
 		curbalance = balance.getbalance(appletaid);
 		if (curbalance < 0) {
-			showpormptT.setText("ÕË»§²éÑ¯Ê§°Ü£¡");
+			showpormptT.setText("è´¦æˆ·æŸ¥è¯¢å¤±è´¥ï¼");
 			
 		} else {
-			balanceT.setText((curbalance/100.0) +"Ôª");
+			balanceT.setText((curbalance/100.0) +"å…ƒ");
 			recmoneyE.setText("");
-			rechargeBtn.setOnClickListener(this);// ³äÖµ½»Ò×
+			rechargeBtn.setOnClickListener(this);// å……å€¼äº¤æ˜“
 			rechargeBtn.setTag(1);
 		}
 	}
@@ -62,16 +62,16 @@ public class RechargeActivity extends Activity implements OnClickListener {
 		int rechmoney=0;//inchmoney
 		String moneyS = recmoneyE.getText().toString();
 		if (moneyS == null || moneyS.equals("")) {
-			ShowDialog.creatDialog(0, "ÌáÊ¾", "ÇëÊäÈë³äÖµ½ğ¶î£¡", null);
+			ShowDialog.creatDialog(0, "æç¤º", "è¯·è¾“å…¥å……å€¼é‡‘é¢ï¼", null);
 			return;
 		}
 		rechmoney = Integer.parseInt(moneyS, 10)*100;//yuan to cent
 		System.out.println(rechmoney);		
 		if (rechmoney == 0) {
-			ShowDialog.creatDialog(0, "ÌáÊ¾", "ÇëÊäÈë³äÖµ½ğ¶î£¡", null);
+			ShowDialog.creatDialog(0, "æç¤º", "è¯·è¾“å…¥å……å€¼é‡‘é¢ï¼", null);
 			return;
 		} else if(rechmoney > 100000){
-			ShowDialog.creatDialog(0, "ÌáÊ¾", "ÊäÈë³äÖµ½ğ¶î³¬³ö·¶Î§£¬ÇëÖØĞÂÊäÈë£¡", null);
+			ShowDialog.creatDialog(0, "æç¤º", "è¾“å…¥å……å€¼é‡‘é¢è¶…å‡ºèŒƒå›´ï¼Œè¯·é‡æ–°è¾“å…¥ï¼", null);
 			return;
 		}else
 		{
@@ -82,7 +82,7 @@ public class RechargeActivity extends Activity implements OnClickListener {
 		System.out.println(moneyS);
 		byte[] moneyB = Util.HexString2Bytes(moneyS);//totalbalance > 65535 wrong	
 		if (moneyB.length > 4) {
-			ShowDialog.creatDialog(0, "ÌáÊ¾", "´Ë½ğ¶îµ¼ÖÂ¿¨ÄÚ½ğ¶î³¬³ö·¶Î§£¬ÇëÖØĞÂÊäÈë£¡", null);
+			ShowDialog.creatDialog(0, "æç¤º", "æ­¤é‡‘é¢å¯¼è‡´å¡å†…é‡‘é¢è¶…å‡ºèŒƒå›´ï¼Œè¯·é‡æ–°è¾“å…¥ï¼", null);
 			return;
 		}
 		System.out.println("load recharge commands!!");
@@ -96,7 +96,7 @@ public class RechargeActivity extends Activity implements OnClickListener {
 				(byte)0x00,(byte)0x00,(byte)0x00,(byte)0x01,(byte)0x12,(byte)0x34,(byte)0x56,(byte)0x78,(byte)0x90,(byte)0xAB };
 		System.arraycopy(keyindex, 0x00, msg, 5,keyindex.length);//keyindex
 		System.arraycopy(moneyB, 0x00, msg,10-moneyB.length,moneyB.length);//recharge number
-		System.arraycopy(terminalnum, 0x00, msg,10,terminalnum.length);//ÖÕ¶Ë»ú±àºÅ
+		System.arraycopy(terminalnum, 0x00, msg,10,terminalnum.length);//ç»ˆç«¯æœºç¼–å·
 		
 		CommandList.addList(2, msg);
 		msg = new byte[] {(byte)0x00,(byte)0xc0,(byte)0x00,(byte)0x00,(byte)0x10 };
@@ -108,7 +108,7 @@ public class RechargeActivity extends Activity implements OnClickListener {
 		System.out.println(result.getSW());
 		System.out.println(result.getResValue());
 		
-		String res = result.getResValue();//0x10byte=Óà¶î4+Á·¼¶½»Ò×ĞòºÅ2+ÃÜÔ¿°æ±¾ºÅ1+Ëã·¨±êÊ¶1+Î±Ëæ»úÊı4+MAC1(4byte)
+		String res = result.getResValue();//0x10byte=ä½™é¢4+ç»ƒçº§äº¤æ˜“åºå·2+å¯†é’¥ç‰ˆæœ¬å·1+ç®—æ³•æ ‡è¯†1+ä¼ªéšæœºæ•°4+MAC1(4byte)
 		String strcurblance = res.substring(0, 8);
 		System.out.println(strcurblance);
 		String strtradnum = res.substring(8, 12);
@@ -122,12 +122,12 @@ public class RechargeActivity extends Activity implements OnClickListener {
 		String strmac1 = res.substring(24, 32);
 		System.out.println(strmac1);
 		
-		String striv = strrandom + strtradnum+"8000"; //·ÖÉ¢Òò×Ó
-		System.out.println("·ÖÉ¢Òò×Ó£º"+striv);
-		System.out.println("Ô­Ê¼key£º"+Util.bytesToHexString(rechargekey));
-		byte[] byteiv = Util.String2Bytes(striv);//×°»»ÎªbyteÀàĞÍ
+		String striv = strrandom + strtradnum+"8000"; //åˆ†æ•£å› å­
+		System.out.println("åˆ†æ•£å› å­ï¼š"+striv);
+		System.out.println("åŸå§‹keyï¼š"+Util.bytesToHexString(rechargekey));
+		byte[] byteiv = Util.String2Bytes(striv);//è£…æ¢ä¸ºbyteç±»å‹
 		byte[] sattkey = mydes.TDesEncrypt(rechargekey, byteiv);
-		System.out.println("¹ı³ÌÃÜÔ¿£º"+Util.bytesToHexString(sattkey));
+		System.out.println("è¿‡ç¨‹å¯†é’¥ï¼š"+Util.bytesToHexString(sattkey));
 		
 		String strrechmoney = Integer.toHexString(rechmoney);
 		int cnt = 8 - strrechmoney.length();
@@ -138,34 +138,34 @@ public class RechargeActivity extends Activity implements OnClickListener {
 		
 		SimpleDateFormat format=new SimpleDateFormat("yyyyMMddHHmmss");
 		String strdatetime = format.format(new Date(System.currentTimeMillis()));
-		System.out.println("Ê±¼ä£º"+strdatetime);
+		System.out.println("æ—¶é—´ï¼š"+strdatetime);
 		
-		String strMAC2data = strrechmoney+strtradtype+strterminalnum+ strdatetime +"800000000000"; //mac2¼ÆËãÔ´Êı¾İ
-		byte[] byteMAC2data = Util.String2Bytes(strMAC2data);//×°»»ÎªbyteÀàĞÍ
+		String strMAC2data = strrechmoney+strtradtype+strterminalnum+ strdatetime +"800000000000"; //mac2è®¡ç®—æºæ•°æ®
+		byte[] byteMAC2data = Util.String2Bytes(strMAC2data);//è£…æ¢ä¸ºbyteç±»å‹
 
-		System.out.println("·ÖÉ¢ÃÜÔ¿£º"+Util.bytesToHexString(sattkey));
-		System.out.println("macÔ´Êı¾İ£º"+Util.bytesToHexString(byteMAC2data));
+		System.out.println("åˆ†æ•£å¯†é’¥ï¼š"+Util.bytesToHexString(sattkey));
+		System.out.println("macæºæ•°æ®ï¼š"+Util.bytesToHexString(byteMAC2data));
 		byte[] macdata = mydes.getMAC(sattkey, byteMAC2data);
-		System.out.println("mac£º"+Util.bytesToHexString(macdata));
+		System.out.println("macï¼š"+Util.bytesToHexString(macdata));
 		
 		byte[] apdu = new byte[]{(byte)0x80,(byte)0x52,(byte)0x00,(byte)0x00,(byte)0x0B,(byte)0x00,
 				(byte)0x00,(byte)0x00,(byte)0x00,(byte)0x00,(byte)0x00,(byte)0x00,(byte)0x00,(byte)0x00,(byte)0x00,(byte)0x00 };
 		byte[] bytedatatime = Util.String2Bytes(strdatetime);
 		System.arraycopy(bytedatatime, 0, apdu, 5, 7);
 		System.arraycopy(macdata, 0, apdu, 12, 4);
-		System.out.println("mac£º"+Util.bytesToHexString(apdu));
+		System.out.println("macï¼š"+Util.bytesToHexString(apdu));
 		result = GetSimInfo.DealAPDU(apdu);
 		
 		apdu = new byte[]{(byte)0x00,(byte)0xc0,(byte)0x00,(byte)0x00,(byte)0x04 };
 		result = GetSimInfo.DealAPDU(apdu);
 		if (!result.getResulttag()) {
-			ShowDialog.creatDialog(0, "ÌáÊ¾", "³äÖµÊ§°Ü£¡", null);
+			ShowDialog.creatDialog(0, "æç¤º", "å……å€¼å¤±è´¥ï¼", null);
 			return;
 		}
 		apdu = new byte[]{(byte)0x80,(byte)0x5c,0x00,0x02,0x04};
 		result = GetSimInfo.DealAPDU(apdu);//get balance
 		GetSimInfo.close();
-		System.out.println("¹Ø±ÕSimIfo£¬");
+		System.out.println("å…³é—­SimIfoï¼Œ");
 		System.out.println(result.getSW());
 		System.out.println(result.getResValue());
 		
@@ -173,20 +173,20 @@ public class RechargeActivity extends Activity implements OnClickListener {
 		if (result.getResulttag()) {
 			curbalance = Integer.parseInt(result.getResValue(), 16);
 			if (curbalance ==  totalbalance) {
-				moneyS = ""+(curbalance/100.0)+"Ôª";
+				moneyS = ""+(curbalance/100.0)+"å…ƒ";
 				balanceT.setText(moneyS);
 				recmoneyE.setText(""+(rechmoney/100));
-				show = "³äÖµ³É¹¦£¬¿¨ÄÚµ±Ç°Óà¶îÎª£º" + (curbalance/100.0) + "Ôª£¡";
+				show = "å……å€¼æˆåŠŸï¼Œå¡å†…å½“å‰ä½™é¢ä¸ºï¼š" + (curbalance/100.0) + "å…ƒï¼";
 				showpormptT.setText(show);
 			} else {
-				show = "³äÖµÊ§°Ü£¬¿¨ÄÚµ±Ç°½ğ¶îÓëÔ¤ÆÚ²»·ûºÏ£¡(Êµ¼Ê£º"+curbalance +"£¬ÆÚÍû£º"+ totalbalance+")";
+				show = "å……å€¼å¤±è´¥ï¼Œå¡å†…å½“å‰é‡‘é¢ä¸é¢„æœŸä¸ç¬¦åˆï¼(å®é™…ï¼š"+curbalance +"ï¼ŒæœŸæœ›ï¼š"+ totalbalance+")";
 				showpormptT.setText(show);
 			}
 		} else {
-			show = "³äÖµÊ§°Ü£¡";
+			show = "å……å€¼å¤±è´¥ï¼";
 			showpormptT.setText(show);
 		}
-		ShowDialog.creatDialog(0, "ÌáÊ¾", show, null);
+		ShowDialog.creatDialog(0, "æç¤º", show, null);
 		return;		
 	}
 

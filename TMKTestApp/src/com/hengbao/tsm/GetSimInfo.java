@@ -25,7 +25,7 @@ public class GetSimInfo implements SEService.CallBack{
         	seService = service;
             if (!seService.isConnected())
             {
-            	ShowDialog.creatDialog(0, "提示", "SE is SIM or UICC so select container",null);
+            	ShowDialog.creatDialog(0, "鎻愮ず", "SE is SIM or UICC so select container",null);
             }
             creatsession();
     }
@@ -57,7 +57,7 @@ public class GetSimInfo implements SEService.CallBack{
  		}
         if(session == null)
         {
-        	ShowDialog.creatDialog(0, "提示", "SE is SIM or UICC so select container",null);
+        	ShowDialog.creatDialog(0, "鎻愮ず", "SE is SIM or UICC so select container",null);
         }  
 	}
 

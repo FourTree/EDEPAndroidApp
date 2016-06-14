@@ -18,17 +18,17 @@ public class Balance {
 	
 	
 	/** 
-     * getbalance  Óà¶î¸ñÊ½×ª»»£¬ÏÔÊ¾£»Àı£º9F7906 000012345678 9000 ÆäÖĞ£º000012345678 ±íÊ¾£º123456.78
-     * @param magdate ÃüÁîÊı¾İËùÔÚ¼¯ºÏ ,ÎªASSICÖµ
-     * @param offest  ÃüÁî³¤¶È×Ö½ÚÔÚ¼¯ºÏÖĞµÄÆ«ÒÆÎ»ÖÃ 
+     * getbalance  ä½™é¢æ ¼å¼è½¬æ¢ï¼Œæ˜¾ç¤ºï¼›ä¾‹ï¼š9F7906 000012345678 9000 å…¶ä¸­ï¼š000012345678 è¡¨ç¤ºï¼š123456.78
+     * @param magdate å‘½ä»¤æ•°æ®æ‰€åœ¨é›†åˆ ,ä¸ºASSICå€¼
+     * @param offest  å‘½ä»¤é•¿åº¦å­—èŠ‚åœ¨é›†åˆä¸­çš„åç§»ä½ç½® 
      */  
 	public int getbalance(byte[] appletaid){       
    		//GetSimInfo getSimInfo = new GetSimInfo();
 		Result result =	GetSimInfo.DealAPDUs(appletaid);
-		System.out.println("Ö¸ÁîÒÑ·¢API=GetSimInfo.DealAPDUs()");
+		System.out.println("æŒ‡ä»¤å·²å‘API=GetSimInfo.DealAPDUs()");
 		
 		GetSimInfo.close();
-		System.out.println("¹Ø±ÕSimIfo£¬");
+		System.out.println("å…³é—­SimIfoï¼Œ");
 		System.out.println(result.getResValue());
 		if(result.getResulttag())	
 		{
@@ -41,9 +41,9 @@ public class Balance {
     } 
 	
 	/** 
-     * showbalance  Óà¶î¸ñÊ½×ª»»£¬ÏÔÊ¾£»Àı£º9F7906 000012345678 9000 ÆäÖĞ£º000012345678 ±íÊ¾£º123456.78
-     * @param magdate ÃüÁîÊı¾İËùÔÚ¼¯ºÏ ,ÎªASSICÖµ
-     * @param offest  ÃüÁî³¤¶È×Ö½ÚÔÚ¼¯ºÏÖĞµÄÆ«ÒÆÎ»ÖÃ 
+     * showbalance  ä½™é¢æ ¼å¼è½¬æ¢ï¼Œæ˜¾ç¤ºï¼›ä¾‹ï¼š9F7906 000012345678 9000 å…¶ä¸­ï¼š000012345678 è¡¨ç¤ºï¼š123456.78
+     * @param magdate å‘½ä»¤æ•°æ®æ‰€åœ¨é›†åˆ ,ä¸ºASSICå€¼
+     * @param offest  å‘½ä»¤é•¿åº¦å­—èŠ‚åœ¨é›†åˆä¸­çš„åç§»ä½ç½® 
      */  
 /*	public void showbalance(byte[] appletaid){       
 		Result result =	GetSimInfo.DealAPDUs(appletaid);
@@ -53,30 +53,30 @@ public class Balance {
 			System.arraycopy(result.getTagvalue(),0, temp, 0, 6);
 			String balance = BytetoMoney(temp);
 			int balance = Integer.valueOf(result.getResValue(),16);
-			ShowDialog.creatDialog(0, "ÕË»§Óà¶î", "Äúµ±Ç°µÄÕË»§Óà¶îÎª£º "+ balance +"Ôª",null);
+			ShowDialog.creatDialog(0, "è´¦æˆ·ä½™é¢", "æ‚¨å½“å‰çš„è´¦æˆ·ä½™é¢ä¸ºï¼š "+ balance +"å…ƒ",null);
 		}else{
 			Util.bytesToString(result.getTagvalue()).replace(" ", "");
-			ShowDialog.creatDialog(0, "ÌáÊ¾", "ÕË»§Óà¶î²éÑ¯Ê§°Ü£¬ÇëÉÔºóÖØÊÔ£¡",null);
+			ShowDialog.creatDialog(0, "æç¤º", "è´¦æˆ·ä½™é¢æŸ¥è¯¢å¤±è´¥ï¼Œè¯·ç¨åé‡è¯•ï¼",null);
 		}
     } */
 	public void showbalance(byte[] appletaid){    
 		int balance =  getbalance(appletaid);
-		System.out.println("È¡Óà¶î¸öÌåbalance()·µ»ØÖµ");
+		System.out.println("å–ä½™é¢ä¸ªä½“balance()è¿”å›å€¼");
 		System.out.print(balance);
 		if(balance < 0)
 		{
-			ShowDialog.creatDialog(0, "ÌáÊ¾", "ÕË»§Óà¶î²éÑ¯Ê§°Ü£¬ÇëÉÔºóÖØÊÔ£¡",null);
+			ShowDialog.creatDialog(0, "æç¤º", "è´¦æˆ·ä½™é¢æŸ¥è¯¢å¤±è´¥ï¼Œè¯·ç¨åé‡è¯•ï¼",null);
 		}else
 		{
-			ShowDialog.creatDialog(0, "ÕË»§Óà¶î", "Äúµ±Ç°µÄÕË»§Óà¶îÎª£º "+ (balance/100.0) +"Ôª",null);
+			ShowDialog.creatDialog(0, "è´¦æˆ·ä½™é¢", "æ‚¨å½“å‰çš„è´¦æˆ·ä½™é¢ä¸ºï¼š "+ (balance/100.0) +"å…ƒ",null);
 		}
     } 
 	
 	
-    /**¡¡¡¡
-   	* ½«Ò»¸ö6 byteµÄDCDÖµ×ªÎªStringĞÍ£»Àı£º000012345678  ×ª»»Îª123456.78
-  ¡¡¡¡* @param byte[] value   ´æ´¢ASSIC¸ñÊ½µÄÊı×é
-  ¡¡¡¡* @return Ò»¸öĞÂµÄStringÖµ
+    /**ã€€ã€€
+   	* å°†ä¸€ä¸ª6 byteçš„DCDå€¼è½¬ä¸ºStringå‹ï¼›ä¾‹ï¼š000012345678  è½¬æ¢ä¸º123456.78
+  ã€€ã€€* @param byte[] value   å­˜å‚¨ASSICæ ¼å¼çš„æ•°ç»„
+  ã€€ã€€* @return ä¸€ä¸ªæ–°çš„Stringå€¼
     */
     public String BytetoMoney(byte[] bytevalue)
     {

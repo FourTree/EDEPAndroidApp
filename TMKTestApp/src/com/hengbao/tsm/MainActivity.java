@@ -39,13 +39,13 @@ public class MainActivity extends Activity implements OnClickListener {
 		setContentView(R.layout.activity_main);
 		
 		ExitApplication.getInstance().addActivity(this);
-		System.out.println("ACC¿ªÊ¼¼ìÑé¡­¡­");
-		//¼ÆËãapp hashÖµ
+		System.out.println("ACCå¼€å§‹æ£€éªŒâ€¦â€¦");
+		//è®¡ç®—app hashå€¼
 		PackageManager packageManager = getPackageManager();
 	    AccessController accessController = new AccessController(packageManager);
 	    String apphash = accessController.countAppHash(packageManager, getPackageName(), this);
-	    System.out.println("ACCÍ¨¹ı");
-		//½¨Á¢Óë¿¨½»»¥µÄservice
+	    System.out.println("ACCé€šè¿‡");
+		//å»ºç«‹ä¸å¡äº¤äº’çš„service
 		GetSimInfo callback = new GetSimInfo();
 		SEService seService = new SEService(this, callback);
 		
@@ -69,13 +69,13 @@ public class MainActivity extends Activity implements OnClickListener {
 		Button balanceBtn = (Button) findViewById(R.id.balance);
 		Button recordBtn = (Button) findViewById(R.id.record);
 		Button appinfoBtn = (Button) findViewById(R.id.appletinfo);
-		tradeBtn.setOnClickListener(this);//³äÖµ½»Ò×
+		tradeBtn.setOnClickListener(this);//å……å€¼äº¤æ˜“
 		tradeBtn.setTag(1);
-		balanceBtn.setOnClickListener(this);//ÕË»§Óà¶î²éÑ¯
+		balanceBtn.setOnClickListener(this);//è´¦æˆ·ä½™é¢æŸ¥è¯¢
 		balanceBtn.setTag(2);
-		recordBtn.setOnClickListener(this); //½»Ò×¼ÇÂ¼²éÑ¯
+		recordBtn.setOnClickListener(this); //äº¤æ˜“è®°å½•æŸ¥è¯¢
 		recordBtn.setTag(3);
-		appinfoBtn.setOnClickListener(this); //ÕË»§¹ÜÀí
+		appinfoBtn.setOnClickListener(this); //è´¦æˆ·ç®¡ç†
 		appinfoBtn.setTag(4);
 	}
 	
@@ -87,7 +87,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		menu.clear();
-		menu.add(0, MENU_EXIT, 0, "ÍË³ö");
+		menu.add(0, MENU_EXIT, 0, "é€€å‡º");
 		return true;
 		
 	}
@@ -149,18 +149,18 @@ public class MainActivity extends Activity implements OnClickListener {
     		MainActivity.this.startActivity(intent);
 			break;
         	case 2:  
-        		System.out.println("µã»÷²éÑ¯Óà¶î");
-        		//²éÑ¯ÕË»§Óà¶î
-        		ShowDialog.creatDialog(0, "ÇëµÈ´ı", "ÕıÔÚ²éÑ¯ÕË»§ĞÅÏ¢...",null);
-        		System.out.println("getbalacne dialogÒÑÏÔÊ¾");
+        		System.out.println("ç‚¹å‡»æŸ¥è¯¢ä½™é¢");
+        		//æŸ¥è¯¢è´¦æˆ·ä½™é¢
+        		ShowDialog.creatDialog(0, "è¯·ç­‰å¾…", "æ­£åœ¨æŸ¥è¯¢è´¦æˆ·ä¿¡æ¯...",null);
+        		System.out.println("getbalacne dialogå·²æ˜¾ç¤º");
         		Balance balance = new Balance();
-        		System.out.println("¶ÔÏóbalanceÒÑÊµÀı»¯");
+        		System.out.println("å¯¹è±¡balanceå·²å®ä¾‹åŒ–");
         		balance.showbalance(appletaid);
-        		System.out.println("balanceÒÑÏÔÊ¾");
+        		System.out.println("balanceå·²æ˜¾ç¤º");
         		break;  
         	case 3:  
-        		//²éÑ¯½»Ò×¼ÇÂ¼
-        		ShowDialog.creatDialog(0, "ÇëµÈ´ı", "ÕıÔÚ²éÑ¯ÕË»§ĞÅÏ¢...",null);
+        		//æŸ¥è¯¢äº¤æ˜“è®°å½•
+        		ShowDialog.creatDialog(0, "è¯·ç­‰å¾…", "æ­£åœ¨æŸ¥è¯¢è´¦æˆ·ä¿¡æ¯...",null);
         		TradeRecord tradeRecord = new TradeRecord();
         		tradeRecord.getTradeRecord(appletaid);
 				break;   
@@ -173,7 +173,7 @@ public class MainActivity extends Activity implements OnClickListener {
         			} catch (Exception e) { 
         				e.printStackTrace(); 
         			}		
-        		ShowDialog.creatDialog(0, "Ó¦ÓÃĞÅÏ¢", "ÊÊÓÃÓÚÒ»°ãÇ®°üµÄ¿Í»§¶Ë²âÊÔ£¬°æ±¾" + version +"¡£",null);
+        		ShowDialog.creatDialog(0, "åº”ç”¨ä¿¡æ¯", "é€‚ç”¨äºä¸€èˆ¬é’±åŒ…çš„å®¢æˆ·ç«¯æµ‹è¯•ï¼Œç‰ˆæœ¬" + version +"ã€‚",null);
         		break; 
         	default :  
         		break;  
@@ -184,14 +184,14 @@ public class MainActivity extends Activity implements OnClickListener {
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if (keyCode == KeyEvent.KEYCODE_BACK) {
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
-			builder.setTitle("ÌáÊ¾");
-			builder.setMessage("ÊÇ·ñÍË³ö´Ë³ÌĞò£¿");
-			builder.setPositiveButton("ÊÇ",
+			builder.setTitle("æç¤º");
+			builder.setMessage("æ˜¯å¦é€€å‡ºæ­¤ç¨‹åºï¼Ÿ");
+			builder.setPositiveButton("æ˜¯",
 					new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int arg0) {
 							finish();
 						}
-					}).setNegativeButton("·ñ",
+					}).setNegativeButton("å¦",
 					new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int arg0) {
 						}

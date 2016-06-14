@@ -16,7 +16,7 @@ public class ExitApplication extends Application {
 		private ExitApplication()
 		{
 		}
-		//µ¥ÀýÄ£Ê½ÖÐ»ñÈ¡Î¨Ò»µÄExitApplication ÊµÀý
+		//å•ä¾‹æ¨¡å¼ä¸­èŽ·å–å”¯ä¸€çš„ExitApplication å®žä¾‹
 		public static ExitApplication getInstance()
 		{
 			if(null == instance)
@@ -25,7 +25,7 @@ public class ExitApplication extends Application {
 			 }
 			 return instance;
 		}
-		//Ìí¼ÓActivity µ½ÈÝÆ÷ÖÐ
+		//æ·»åŠ Activity åˆ°å®¹å™¨ä¸­
 		public void addActivity(Activity activity)
 		{
 			currentcontext = activity;
@@ -37,7 +37,7 @@ public class ExitApplication extends Application {
 		{
 			return currentcontext;
 		}
-		//»ØÍËActivity ²¢finishµ±Ç°Activity
+		//å›žé€€Activity å¹¶finishå½“å‰Activity
 		public void backAct()
 		{
 			//currentcontext = activityList.;
@@ -46,7 +46,7 @@ public class ExitApplication extends Application {
 			currentcontext = activityList.remove(Location-1);;
 		}
 		
-		//±éÀúËùÓÐActivity ²¢finish
+		//éåŽ†æ‰€æœ‰Activity å¹¶finish
 		public void exit()
 		{
 			 for(Activity activity:activityList)

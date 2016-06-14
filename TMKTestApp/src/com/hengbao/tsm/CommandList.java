@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-//×éÖ¯Òª·¢ËÍµÄÖ¸Áî¼¯ºÏ
+//ç»„ç»‡è¦å‘é€çš„æŒ‡ä»¤é›†åˆ
 public class CommandList {
 
 	private static List<byte[]> mListcmd = new ArrayList<byte[]>();
@@ -14,13 +14,13 @@ public class CommandList {
 		mListcmd = new ArrayList<byte[]>();;
 	}
 */	
-	//Ôö¼ÓÖ¸Áî¼¯ÖĞµÄÖ¸Áî
+	//å¢åŠ æŒ‡ä»¤é›†ä¸­çš„æŒ‡ä»¤
 	public static void addList(int location,byte[] msg)
 	{
 		mListcmd.add(location, msg);
 	}
 	
-	//Çå³ıÖ¸Áî¼¯ÖĞµÄÖ¸Áî
+	//æ¸…é™¤æŒ‡ä»¤é›†ä¸­çš„æŒ‡ä»¤
 	public static void clearList()
 	{
 		if(!mListcmd.isEmpty())
@@ -29,7 +29,7 @@ public class CommandList {
 		}
 	}
 	
-	//»ñÈ¡Ö¸Áî¼¯ÖĞµÄÖ¸Áî
+	//è·å–æŒ‡ä»¤é›†ä¸­çš„æŒ‡ä»¤
 	public static byte[] getList(int location)
 	{
 /*		for(String temp:mListcmd)
@@ -45,7 +45,7 @@ public class CommandList {
 		return mListcmd.get(location);
 	}
 	
-	//»ñÈ¡Ö¸Áî¼¯ÖĞµÄÖ¸Áî
+	//è·å–æŒ‡ä»¤é›†ä¸­çš„æŒ‡ä»¤
 	public static int getListSize()
 	{
 		return mListcmd.size();

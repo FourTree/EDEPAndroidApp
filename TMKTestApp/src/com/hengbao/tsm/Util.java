@@ -65,7 +65,7 @@ public class Util {
         return s;
     }
     
- // ASCIIÂë×ª»»Îªhex×Ö½Ú£¬lenÊÇÊäÈëÊı¾İµÄ³¤¶È
+ // ASCIIç è½¬æ¢ä¸ºhexå­—èŠ‚ï¼Œlenæ˜¯è¾“å…¥æ•°æ®çš„é•¿åº¦
     public static byte[]  AsciiToByte( byte[]indata,int len)
     {
     	int x, y, n;
@@ -95,7 +95,7 @@ public class Util {
     	return resultdata;
     }
 
-    // hex×Ö½Ú×ª»»ÎªASCIIÂë£¬lenÊÇÊäÈëÊı¾İµÄ³¤¶È
+    // hexå­—èŠ‚è½¬æ¢ä¸ºASCIIç ï¼Œlenæ˜¯è¾“å…¥æ•°æ®çš„é•¿åº¦
     public static byte[] ByteToAscii( byte[]indata,int len)
     {
     	int x, y, n;
@@ -139,10 +139,10 @@ public class Util {
     
     
     
-    /**¡¡¡¡
-   	* ½«Ò»¸öasciiĞÍÊı×é×ªÎªhexĞÍÊı×é£»
-  	*@param srcdata   asciiĞÍÊı×é
-  ¡¡    * @return result   ×ª»»ºóµÄhexĞÍÊı×é
+    /**ã€€ã€€
+   	* å°†ä¸€ä¸ªasciiå‹æ•°ç»„è½¬ä¸ºhexå‹æ•°ç»„ï¼›
+  	*@param srcdata   asciiå‹æ•°ç»„
+  ã€€    * @return result   è½¬æ¢åçš„hexå‹æ•°ç»„
      * @param len 
     */
     public static byte[] AsciiToHEX( byte[]  srcdata, int len) {
@@ -157,10 +157,10 @@ public class Util {
 		return result;
     }
     
-    /**¡¡¡¡
-   	* ½«Ò»¸öhexĞÍÊı×é×ªÎªasciiĞÍÊı×é£»
-  	*@param srcdata   hexĞÍÊı×é
-  ¡¡    * @return result   ×ª»»ºóµÄasciiĞÍÊı×é
+    /**ã€€ã€€
+   	* å°†ä¸€ä¸ªhexå‹æ•°ç»„è½¬ä¸ºasciiå‹æ•°ç»„ï¼›
+  	*@param srcdata   hexå‹æ•°ç»„
+  ã€€    * @return result   è½¬æ¢åçš„asciiå‹æ•°ç»„
     */
     public static byte[] HEXToAscii( byte[]  srcdata, int len) {
     	
@@ -251,11 +251,11 @@ public class Util {
     	 }
     
     
-    /**¡¡¡¡
-   	* Á¬½ÓÁ½¸öbyteÊı×é£¬Ö®ºó·µ»ØÒ»¸öĞÂµÄÁ¬½ÓºÃµÄbyteÊı×é
-  ¡¡¡¡* @param a1
-  ¡¡¡¡* @param a2
-  ¡¡¡¡* @return Ò»¸öĞÂµÄÁ¬½ÓºÃµÄbyteÊı×é
+    /**ã€€ã€€
+   	* è¿æ¥ä¸¤ä¸ªbyteæ•°ç»„ï¼Œä¹‹åè¿”å›ä¸€ä¸ªæ–°çš„è¿æ¥å¥½çš„byteæ•°ç»„
+  ã€€ã€€* @param a1
+  ã€€ã€€* @param a2
+  ã€€ã€€* @return ä¸€ä¸ªæ–°çš„è¿æ¥å¥½çš„byteæ•°ç»„
     */
     public static byte[] ArrayJoin(byte[] a1, byte[] a2) {
     	if((a1 == null)&&(a2 != null)){
@@ -277,10 +277,10 @@ public class Util {
     } 
     
   
-    /**¡¡¡¡
-   	* ½«Ò»¸öintĞÍÖµ×ªÎª4×Ö½Úbyte[]ĞÍ£»
-  	* @param value    intĞÍÊıÖµ
-  ¡¡    * @return result   ×ª»»ºóµÄ4×Ö½ÚBYTE[]
+    /**ã€€ã€€
+   	* å°†ä¸€ä¸ªintå‹å€¼è½¬ä¸º4å­—èŠ‚byte[]å‹ï¼›
+  	* @param value    intå‹æ•°å€¼
+  ã€€    * @return result   è½¬æ¢åçš„4å­—èŠ‚BYTE[]
     */
    public static byte[] IntToByte(int value) {
     	byte[] result = new byte[0x04];
@@ -294,12 +294,12 @@ public class Util {
     }
 	
 
-    /**¡¡¡¡
-   	* ½«Ò»¸öbyte[]ĞÍÖµ×ªÎªintĞÍ,³¤¶È²»´óÓÚ4£»
-  ¡¡¡¡* @param srcnum[]
+    /**ã€€ã€€
+   	* å°†ä¸€ä¸ªbyte[]å‹å€¼è½¬ä¸ºintå‹,é•¿åº¦ä¸å¤§äº4ï¼›
+  ã€€ã€€* @param srcnum[]
   	* @param srcnum[] offset
   	* @param len
-  ¡¡¡¡* @return Ò»¸öĞÂµÄintÖµ
+  ã€€ã€€* @return ä¸€ä¸ªæ–°çš„intå€¼
     */
     public static int Byte2ToInt(byte[] srcnum,int offset,int len) {
 		int  desnum = 0;
@@ -319,10 +319,10 @@ public class Util {
 		 return desnum;
     }
     
-    /**¡¡¡¡
-   	* ½«Ò»¸öbyte[]ĞÍµÄDCDÖµ×ªÎªStringĞÍ£»
-  ¡¡¡¡* @param byte[] value   ´æ´¢BCD¸ñÊ½µÄÊı×é
-  ¡¡¡¡* @return Ò»¸öĞÂµÄStringÖµ
+    /**ã€€ã€€
+   	* å°†ä¸€ä¸ªbyte[]å‹çš„DCDå€¼è½¬ä¸ºStringå‹ï¼›
+  ã€€ã€€* @param byte[] value   å­˜å‚¨BCDæ ¼å¼çš„æ•°ç»„
+  ã€€ã€€* @return ä¸€ä¸ªæ–°çš„Stringå€¼
     */
     public static String BCD2String(byte[] value)
     {

@@ -34,7 +34,7 @@ public class AccessController
     this.mPackageManager = paramPackageManager;
   }
   
-  //»ñÈ¡Êı×ÖÖ¤Êé£¬½«Ö¤Êé×ª»»Îª·ûºÏX509±ê×¼µÄÀàĞÍ
+  //è·å–æ•°å­—è¯ä¹¦ï¼Œå°†è¯ä¹¦è½¬æ¢ä¸ºç¬¦åˆX509æ ‡å‡†çš„ç±»å‹
   public Certificate decodeCertificate(byte[] paramArrayOfByte)throws CertificateException
   {
     CertificateFactory localCertificateFactory = CertificateFactory.getInstance("X.509");
@@ -128,7 +128,7 @@ public class AccessController
 				 	 return ((MessageDigest) object).digest(arrayOfByte);
 				}
 			 }
-	 //¼ÆËãappHASHÖµ
+	 //è®¡ç®—appHASHå€¼
 	 public String countAppHash(PackageManager packageManager,String packageName,Context context)
 	 { 
 		String st = "";	
@@ -169,14 +169,14 @@ public class AccessController
 	    	    		  Log.i(LOG_TAG,"ST22 ---->: "+  st +"\n"); 
 	    	    	  }
 	    	      }
-	    			//½¨Á¢Óë¿¨½»»¥µÄservice
+	    			//å»ºç«‹ä¸å¡äº¤äº’çš„service
 	    			//GetSimInfo callback = new GetSimInfo();
 	    			//SEService seService = new SEService(context, callback);
 	    	      return st;   
 	        }
 	        catch (Exception localException)
 	        {
-	        	//½¨Á¢Óë¿¨½»»¥µÄservice
+	        	//å»ºç«‹ä¸å¡äº¤äº’çš„service
     			//GetSimInfo callback = new GetSimInfo();
     			//SEService seService = new SEService(context, callback);
 	        	return "";

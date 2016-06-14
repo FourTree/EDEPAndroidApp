@@ -48,7 +48,7 @@ public class ShowDialog{
 					.setIcon(android.R.drawable.ic_dialog_info)
 					.setTitle(strTitle)
 					.setMessage(strMsg)
-					.setPositiveButton("È·¶¨", 
+					.setPositiveButton("ç¡®å®š", 
 					new DialogInterface.OnClickListener() {						
 						@Override
 						public void onClick(DialogInterface dialog, int whichButton) {
@@ -72,7 +72,7 @@ public class ShowDialog{
 						public void onClick(DialogInterface dialog, int which) {
 							// TODO Auto-generated method stub
 						}})
-					.setPositiveButton("È·¶¨", 
+					.setPositiveButton("ç¡®å®š", 
 					new DialogInterface.OnClickListener() {						
 						@Override
 						public void onClick(DialogInterface dialog, int whichButton) {
@@ -91,7 +91,7 @@ public class ShowDialog{
 				.setIcon(android.R.drawable.ic_dialog_info)
 				.setTitle(strTitle)
 				.setMessage(strMsg)
-				.setPositiveButton("È·¶¨", 
+				.setPositiveButton("ç¡®å®š", 
 				new DialogInterface.OnClickListener() {						
 					@Override
 					public void onClick(DialogInterface dialog, int whichButton) {
@@ -99,7 +99,7 @@ public class ShowDialog{
 						returnvalue = CLICK_OK;
 						dialog.cancel();  
 					}
-				}).setNegativeButton("È¡Ïû", 
+				}).setNegativeButton("å–æ¶ˆ", 
 				new DialogInterface.OnClickListener() {						
 					@Override
 					public void onClick(DialogInterface dialog, int whichButton) {
@@ -112,7 +112,7 @@ public class ShowDialog{
 				break;	
 			case DIALOG_PROGRESSDIALOG:
 					progressDialog = ProgressDialog.show( mContext,strTitle, strMsg,true);  
-			   	    progressDialog.setCancelable(false);//µ±µã»÷°´Å¥·µ»ØµÄÊ±ºòDialogÏûÊ§ 
+			   	    progressDialog.setCancelable(false);//å½“ç‚¹å‡»æŒ‰é’®è¿”å›çš„æ—¶å€™Dialogæ¶ˆå¤± 
 			default:
 				return;
 		}
@@ -169,39 +169,39 @@ public class ShowDialog{
 
         // TODO Auto-generated method stub
         
-        //´´½¨ProgressDialog¶ÔÏó
+        //åˆ›å»ºProgressDialogå¯¹è±¡
         m_pDialog = new ProgressDialog(context);
 
-        // ÉèÖÃ½ø¶ÈÌõ·ç¸ñ£¬·ç¸ñÎªÔ²ĞÎ£¬Ğı×ªµÄ
+        // è®¾ç½®è¿›åº¦æ¡é£æ ¼ï¼Œé£æ ¼ä¸ºåœ†å½¢ï¼Œæ—‹è½¬çš„
         m_pDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 
-        // ÉèÖÃProgressDialog ±êÌâ
+        // è®¾ç½®ProgressDialog æ ‡é¢˜
         m_pDialog.setTitle(strTitle);
       
-        // ÉèÖÃProgressDialog ÌáÊ¾ĞÅÏ¢
+        // è®¾ç½®ProgressDialog æç¤ºä¿¡æ¯
         m_pDialog.setMessage(strMsg);
 
-        // ÉèÖÃProgressDialog ±êÌâÍ¼±ê
+        // è®¾ç½®ProgressDialog æ ‡é¢˜å›¾æ ‡
         //m_pDialog.setIcon(R.drawable.ic_1);
         m_pDialog.setIcon(imageid);
 
-        // ÉèÖÃProgressDialog µÄ½ø¶ÈÌõÊÇ·ñ²»Ã÷È·
+        // è®¾ç½®ProgressDialog çš„è¿›åº¦æ¡æ˜¯å¦ä¸æ˜ç¡®
         m_pDialog.setIndeterminate(false);
       
-        // ÉèÖÃProgressDialog ÊÇ·ñ¿ÉÒÔ°´ÍË»Ø°´¼üÈ¡Ïû
+        // è®¾ç½®ProgressDialog æ˜¯å¦å¯ä»¥æŒ‰é€€å›æŒ‰é”®å–æ¶ˆ
         //m_pDialog.setCancelable(true);
         m_pDialog.setCancelable(false);
       
-        // ÉèÖÃProgressDialog µÄÒ»¸öButton
-        m_pDialog.setButton("È·¶¨", new DialogInterface.OnClickListener() {
+        // è®¾ç½®ProgressDialog çš„ä¸€ä¸ªButton
+        m_pDialog.setButton("ç¡®å®š", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int i)
             {
-                //µã»÷¡°È·¶¨°´Å¥¡±È¡Ïû¶Ô»°¿ò
+                //ç‚¹å‡»â€œç¡®å®šæŒ‰é’®â€å–æ¶ˆå¯¹è¯æ¡†
                 dialog.cancel();
             }
         });
 
-        // ÈÃProgressDialogÏÔÊ¾
+        // è®©ProgressDialogæ˜¾ç¤º
         m_pDialog.show();
 
 		return m_pDialog;
